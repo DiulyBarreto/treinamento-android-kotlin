@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExemploConstraintLayout</string>
+    <string name="braun_classic_watch">Braun Classic Watch</string>
+    <string name="test_long_string">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus at augue in dapibus. Sed sit amet sagittis odio. Nullam feugiat diam et odio facilisis molestie. Sed id odio sit amet augue sollicitudin posuere ornare sit amet enim. Morbi tempus metus leo, eu imperdiet augue vehicula non. Ut egestas lacinia fermentum.</string>
+    <string name="watch_value">$160.00</string>
+    <string name="watch_value_description">$140.00 Member Price</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="the_art_museum">The Art Museum</string>
+    <string name="shop">Shop</string>
+</resources>
