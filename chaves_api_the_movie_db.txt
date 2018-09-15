@@ -1,0 +1,8 @@
+Chave da Api
+06bdcbf2eaafc2cbe7cce65ffb372c94
+
+Token de Leitura
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNmJkY2JmMmVhYWZjMmNiZTdjY2U2NWZmYjM3MmM5NCIsInN1YiI6IjViOWNmYTE2OTI1MTQxMDIzYzAwZDU0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zuJhHWFYELxtMGF7s7LIwUcGFec7DKQBV4PBc66okZk
+
+Solicitação de API
+https://api.themoviedb.org/3/movie/550?api_key=06bdcbf2eaafc2cbe7cce65ffb372c94
