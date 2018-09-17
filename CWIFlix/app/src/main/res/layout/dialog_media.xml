@@ -9,7 +9,8 @@
         android:id="@+id/titleTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/average"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
@@ -24,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:text="6.7/10"
         android:layout_marginBottom="8dp"/>
 
     <TextView

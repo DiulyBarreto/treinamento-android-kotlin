@@ -19,6 +19,13 @@ class MediaDialogFragment: DialogFragment() {
 
         val view = inflater.inflate(R.layout.dialog_media, container, false)
 
+        SharedPreferencesService.retrieveFloat(media.id.toString()).run {
+            if (!this.equals( -1f)) {
+                view.mediaRatingBar.rating = this / 2
+                view.myRatingTextView.text = "${this.toInt()}/10"
+            }
+        }
+
         media.run {
             view.titleTextView.text = title
             view.overviewTextView.text = overview
@@ -26,11 +33,12 @@ class MediaDialogFragment: DialogFragment() {
             view.average.text = "$voteAverage/10"
         }
 
-        view.mediaRatingBar.setOnRatingBarChangeListener {ratingBar, rating, _ ->
-            myRatingTextView.text = "${(rating * 2).toInt()}/10"
-            SharedPreferencesService.writeMediaRating(media.id, rating)
+        view.mediaRatingBar.setOnRatingBarChangeListener {_, rating, _ ->
+            val ratingFloat = rating * 2
+            val castRating = ratingFloat.toInt()
+            myRatingTextView.text = "$castRating/10"
+            SharedPreferencesService.write(media.id.toString(), ratingFloat)
         }
-
 
         return view
     }
