@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_actors.view.*
 import kotlinx.android.synthetic.main.view_media.view.*
 
-class ActorsAdapter(val items: List<Media>) : RecyclerView.Adapter<ActorsAdapter.ViewHolder>() {
+class ActorsAdapter(val items: List<Media>, val onClick: (media: Media) -> Unit) : RecyclerView.Adapter<ActorsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)

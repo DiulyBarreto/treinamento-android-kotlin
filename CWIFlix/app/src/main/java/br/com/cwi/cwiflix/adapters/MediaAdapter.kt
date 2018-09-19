@@ -24,7 +24,7 @@ class MediaAdapter(val items: List<Media>, val onClick: (media: Media) -> Unit) 
 
         Picasso
                 .with(holder.itemView.context)
-                .load(ImageURLProvider.small(item.image))
+                .load(ImageURLProvider.small(item?.image))
                 .into(holder.posterImageButton)
 
         holder.posterImageButton.setOnClickListener{
