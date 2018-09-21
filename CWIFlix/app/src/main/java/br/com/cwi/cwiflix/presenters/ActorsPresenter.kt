@@ -15,7 +15,6 @@ class ActorsPresenter(val view: ActorsView): Callback<PeopleResult> {
         MovieDatabaseService.service.getPopularPeople().enqueue(this)
     }
 
-
     override fun onFailure(call: Call<PeopleResult>?, t: Throwable?) {
         Log.e("ActorsFramgment", t?.localizedMessage, t)
     }
