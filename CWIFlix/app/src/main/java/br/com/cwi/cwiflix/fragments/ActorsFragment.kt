@@ -4,61 +4,45 @@ package br.com.cwi.cwiflix.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.cwi.cwiflix.R
-import br.com.cwi.cwiflix.activities.SerieActivity
+import br.com.cwi.cwiflix.activities.PersonActivity
 import br.com.cwi.cwiflix.adapters.ActorsAdapter
-import br.com.cwi.cwiflix.api.MovieDatabaseService
-import br.com.cwi.cwiflix.api.models.MediaResult
-import br.com.cwi.cwiflix.api.models.Serie
+import br.com.cwi.cwiflix.api.models.Person
+import br.com.cwi.cwiflix.api.models.PopularPeople
+import br.com.cwi.cwiflix.presenters.ActorsPresenter
+import br.com.cwi.cwiflix.views.ActorsView
 import kotlinx.android.synthetic.main.fragment_actors.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
-class ActorsFragment : Fragment(), Callback<MediaResult> {
+class ActorsFragment : Fragment(), ActorsView {
 
     lateinit var adapter: ActorsAdapter
 
+    private val presenter: ActorsPresenter by lazy {
+        ActorsPresenter(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        MovieDatabaseService.service.getPopularPeople().enqueue(this)
+        presenter.onCreateView()
         return inflater.inflate(R.layout.fragment_actors, container, false)
     }
 
-    override fun onFailure(call: Call<MediaResult>, t: Throwable) {
-        Log.e("ActorsFramgment", t.localizedMessage, t)
-    }
-
-    override fun onResponse(call: Call<MediaResult>?, response: Response<MediaResult>) {
-        response.body()?.results?.let {
-            adapter = ActorsAdapter(it) { serie ->
-                serie.id?.let {
-                    getSerieDetail(serie.id)
-                }
+    override fun onResponse(list: List<PopularPeople>) {
+        adapter = ActorsAdapter(list) { person ->
+            person.id?.let {
+                presenter.getPersonDetail(person.id)
             }
-            recyclerViewActors.adapter = adapter
         }
+        recyclerViewActors.adapter = adapter
     }
 
-    private fun getSerieDetail(id: Int) {
-        val request = MovieDatabaseService.service.getTvDetail(id)
+    override fun goToDetail(person: Person) {
+        val intent = Intent(activity, PersonActivity::class.java)
+        intent.putExtra("person", person)
 
-        request.enqueue(object : Callback<Serie> {
-
-            override fun onResponse(call: Call<Serie>?, response: Response<Serie>?) {
-                val  intent = Intent(activity, SerieActivity::class.java)
-                intent.putExtra("serie", response?.body())
-
-                activity?.startActivity(intent)
-            }
-
-            override fun onFailure(call: Call<Serie>?, t: Throwable?) {
-                Log.e("rsponse", t.toString())
-            }
-        })
+        activity?.startActivity(intent)
     }
 }

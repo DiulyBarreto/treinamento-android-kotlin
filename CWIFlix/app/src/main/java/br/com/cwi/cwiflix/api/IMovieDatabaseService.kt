@@ -1,9 +1,6 @@
 package br.com.cwi.cwiflix.api
 
-import br.com.cwi.cwiflix.api.models.MediaResult
-import br.com.cwi.cwiflix.api.models.Movie
-import br.com.cwi.cwiflix.api.models.Person
-import br.com.cwi.cwiflix.api.models.Serie
+import br.com.cwi.cwiflix.api.models.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,7 +15,7 @@ interface IMovieDatabaseService {
     fun getPopularTvShows(): Call<MediaResult>
 
     @GET("person/popular")
-    fun getPopularPeople(): Call<MediaResult>
+    fun getPopularPeople(): Call<PeopleResult>
 
     @GET("movie/{movie_id}")
     fun getMovieDetail(@Path("movie_id") id: Int) : Call<Movie>

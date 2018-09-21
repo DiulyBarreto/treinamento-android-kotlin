@@ -4,25 +4,20 @@ package br.com.cwi.cwiflix.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.cwi.cwiflix.R
 import br.com.cwi.cwiflix.activities.SerieActivity
 import br.com.cwi.cwiflix.adapters.MediaAdapter
-import br.com.cwi.cwiflix.api.MovieDatabaseService
 import br.com.cwi.cwiflix.api.models.Media
-import br.com.cwi.cwiflix.api.models.MediaResult
 import br.com.cwi.cwiflix.api.models.Serie
 import br.com.cwi.cwiflix.presenters.SeriesPresenter
+import br.com.cwi.cwiflix.views.SeriesView
 import kotlinx.android.synthetic.main.fragment_media.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
-class SeriesFragment : Fragment(), SeriesView{
+class SeriesFragment : Fragment(), SeriesView {
 
     lateinit var adapter: MediaAdapter
 

@@ -5,7 +5,7 @@ import br.com.cwi.cwiflix.api.MovieDatabaseService
 import retrofit2.Callback
 import br.com.cwi.cwiflix.api.models.MediaResult
 import br.com.cwi.cwiflix.api.models.Movie
-import br.com.cwi.cwiflix.fragments.MoviesView
+import br.com.cwi.cwiflix.views.MoviesView
 import retrofit2.Call
 import retrofit2.Response
 

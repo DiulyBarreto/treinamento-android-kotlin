@@ -1,12 +1,10 @@
 package br.com.cwi.cwiflix.presenters
 
-import android.content.Intent
 import android.util.Log
-import br.com.cwi.cwiflix.activities.SerieActivity
 import br.com.cwi.cwiflix.api.MovieDatabaseService
 import br.com.cwi.cwiflix.api.models.MediaResult
 import br.com.cwi.cwiflix.api.models.Serie
-import br.com.cwi.cwiflix.fragments.SeriesView
+import br.com.cwi.cwiflix.views.SeriesView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

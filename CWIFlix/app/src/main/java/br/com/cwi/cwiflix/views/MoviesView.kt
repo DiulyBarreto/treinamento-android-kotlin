@@ -1,4 +1,4 @@
-package br.com.cwi.cwiflix.fragments
+package br.com.cwi.cwiflix.views
 
 import br.com.cwi.cwiflix.api.models.Media
 import br.com.cwi.cwiflix.api.models.Movie

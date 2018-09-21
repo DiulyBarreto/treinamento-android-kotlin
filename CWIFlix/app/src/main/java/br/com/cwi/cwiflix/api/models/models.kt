@@ -4,14 +4,21 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class MediaResult(val results: List<Media>)
+class PeopleResult(val results: List<PopularPeople>)
 
-class Media(
+class Media (
         val id: Int,
-        @SerializedName("title", alternate = ["name"]) val title: String,
-        @SerializedName("poster_path", alternate = ["profile_path"]) val image: String,
+        @SerializedName("title") val title: String,
+        @SerializedName("poster_path") val image: String,
         @SerializedName("release_date", alternate = ["first_air_date"]) val releaseDate: String,
         @SerializedName("vote_average")val voteAverage: Double,
         val overview: String
+)
+
+class PopularPeople (
+        val id: Int,
+        @SerializedName("name") val name: String,
+        @SerializedName("profile_path") val image: String
 )
 
 class Movie: Serializable {
@@ -48,8 +55,14 @@ class Serie : Serializable {
 }
 
 class Person: Serializable {
+    @SerializedName("profile_path")
+    var image: String? = null
 
-    var profilePath: String? = null
+    @SerializedName("name")
     var name: String? = null
+
+    @SerializedName("biography")
     var biography: String? = null
 }
+
+

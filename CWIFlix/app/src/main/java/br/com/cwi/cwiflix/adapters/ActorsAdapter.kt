@@ -4,15 +4,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import br.com.cwi.cwiflix.R
-import br.com.cwi.cwiflix.api.models.Media
+import br.com.cwi.cwiflix.api.models.Person
+import br.com.cwi.cwiflix.api.models.PopularPeople
 import br.com.cwi.cwiflix.utils.ImageURLProvider
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_actors.view.*
-import kotlinx.android.synthetic.main.view_media.view.*
 
-class ActorsAdapter(val items: List<Media>, val onClick: (media: Media) -> Unit) : RecyclerView.Adapter<ActorsAdapter.ViewHolder>() {
+class ActorsAdapter(val items: List<PopularPeople>, val onClick: (person: PopularPeople) -> Unit) : RecyclerView.Adapter<ActorsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,16 +24,19 @@ class ActorsAdapter(val items: List<Media>, val onClick: (media: Media) -> Unit)
 
         Picasso
                 .with(holder.itemView.context)
-                .load(ImageURLProvider.small(item.image))
-                .into(holder.posterImageViewActors)
+                .load(ImageURLProvider.small(item.image.toString()))
+                .into(holder.posterImageButtonActors)
 
-        holder.titleTextViewActors.text = item.title
+        holder.nameTextViewActors.text = item.name
+        holder.posterImageButtonActors.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun getItemCount() = items.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val posterImageViewActors = itemView.posterImageViewActors
-        val titleTextViewActors = itemView.titleTextViewActors
+        val posterImageButtonActors = itemView.posterImageButtonActors
+        val nameTextViewActors = itemView.nameTextViewActors
     }
 }
